@@ -1,0 +1,49 @@
+{
+  "name": "aragon_challenge_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node dist/api/index.js",
+    "dev": "nodemon src/api/index.ts",
+    "worker:conversion": "ts-node src/workers/conversion/index.ts",
+    "worker:compression": "ts-node src/workers/compression/index.ts",
+    "worker:variant": "ts-node src/workers/variant/index.ts",
+    "worker:all": "ts-node src/workers/index.ts",
+    "build": "tsc --ignoreDeprecations 6.0",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bull-board/api": "^7.0.0",
+    "@bull-board/express": "^7.0.0",
+    "@prisma/client": "^6.4.1",
+    "axios": "^1.16.0",
+    "bullmq": "^5.76.8",
+    "cloudinary": "^2.10.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "ioredis": "^5.10.1",
+    "multer": "^2.1.1",
+    "prisma": "^6.4.1",
+    "sharp": "^0.34.5",
+    "uuid": "^14.0.0",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^25.7.0",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

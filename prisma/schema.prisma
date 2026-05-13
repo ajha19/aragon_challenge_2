@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Media {
+  id               String    @id @default(uuid())
+  originalUrl      String
+  status           Status    @default(PENDING)
+  failureReason    String?
+  compressionRatio Float?
+  outputSize       Int?      // In bytes
+  metadata         Json?     // Ex: { width, height, format }
+  variants         Variant[]
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Variant {
+  id        String   @id @default(uuid())
+  mediaId   String
+  media     Media    @relation(fields: [mediaId], references: [id])
+  type      VariantType
+  url       String
+  createdAt DateTime @default(now())
+}
+
+enum Status {
+  PENDING
+  CONVERTING
+  COMPRESSING
+  GENERATING_VARIANTS
+  COMPLETED
+  FAILED
+}
+
+enum VariantType {
+  THUMBNAIL
+  WEB
+  FULL
+}
