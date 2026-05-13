@@ -10,7 +10,7 @@
     "worker:conversion": "ts-node src/workers/conversion/index.ts",
     "worker:compression": "ts-node src/workers/compression/index.ts",
     "worker:variant": "ts-node src/workers/variant/index.ts",
-    "worker:all": "ts-node src/workers/index.ts",
+    "worker:all": "nodemon --watch src --ext ts,json --exec ts-node src/workers/index.ts",
     "build": "tsc --ignoreDeprecations 6.0",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"

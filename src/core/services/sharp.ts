@@ -10,7 +10,6 @@ export class SharpService {
         .toFormat('webp', { quality: 100 })
         .toBuffer();
     } catch (error) {
-      logger.error('Sharp normalization failed', { error });
       throw error;
     }
   }
